@@ -13,12 +13,28 @@ export async function createCompletion(prompt: string) {
     return { error: "Prompt is required" };
   }
   
-    const messages: any = [
-      {
-        role: 'user',
-        content: `Write a blog post around 200 words about the following topic: "${prompt}" in markdown format.`
-      }
-    ]
+  interface Message {
+    role: 'user' | 'assistant';
+    content: string;
+  }
+  
+  const messages: Message[] = [
+    {
+      role: 'user',
+      content: `Write a detailed SEO-optimized blog post on {prompt}. The post should include:
+  
+        A keyword-rich title (50-60 characters).
+        A summary up to 160 characters highlighting the main points.
+        Organize content into clear sections with keywords naturally integrated.
+        Provide deep, practical insights with examples and case studies.
+        Include bullet points or lists for easy readability.
+        Use credible sources for data, stats, and quotes.
+        Focus on primary and related keywords to improve search ranking.
+        End with a clear call to action summarizing the key points.
+        Add supporting elements like alt text for images, internal links, and external links to authoritative sources.
+      `
+    }
+  ];
   
     const completion = await openai.chat.completions.create({
       model: 'gpt-4',
