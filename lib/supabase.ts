@@ -16,7 +16,7 @@ async function testConnection() {
 testConnection();
 
 export async function getBlogById(id: number) {
-  const { data, error } = await supabase
+  const { data } = await supabase
     .from('blogs')
     .select()
     .eq('id', id)
@@ -26,7 +26,7 @@ export async function getBlogById(id: number) {
 }
 
 export async function getAllBlogs() {
-  const { data, error } = await supabase
+  const { data} = await supabase
     .from('blogs')
     .select()
     .order('created_at', { ascending: false })

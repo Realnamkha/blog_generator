@@ -35,7 +35,7 @@ export default function Form() {
     setTitles(updatedTitles);
   };
 
-  async function action(formData: FormData) {
+  async function action() {
     const totalTitles = titles.length; // Total number of titles
     let completed = 0; // Track the number of completed titles
     for (const title of titles) {
