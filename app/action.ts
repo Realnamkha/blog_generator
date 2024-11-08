@@ -14,25 +14,23 @@ export async function createCompletion(prompt: string) {
   }
   
   interface Message {
-    role: 'user' | 'assistant';
+    role: 'user' | 'system' | 'assistant';
     content: string;
   }
   
   const messages: Message[] = [
     {
       role: 'user',
-      content: `Write a detailed SEO-optimized blog post on {prompt}. The post should include:
+      content: `As an expert SEO blog writer, craft a detailed and optimized blog post of around 200 words on the topic: "${prompt}". Format the response in markdown, including the following sections:
   
-        A keyword-rich title (50-60 characters).
-        A summary up to 160 characters highlighting the main points.
-        Organize content into clear sections with keywords naturally integrated.
-        Provide deep, practical insights with examples and case studies.
-        Include bullet points or lists for easy readability.
-        Use credible sources for data, stats, and quotes.
-        Focus on primary and related keywords to improve search ranking.
-        End with a clear call to action summarizing the key points.
-        Add supporting elements like alt text for images, internal links, and external links to authoritative sources.
-      `
+  - **Title**: A compelling, keyword-rich title.
+  - **Meta Description**: A concise, SEO-friendly description of the blog post for search engines.
+  - **Introduction**: An engaging introduction that hooks the reader.
+  - **Subheadings**: Relevant subheadings for improved readability.
+  - **Content**: Provide informative and valuable insights under each subheading.
+  - **Conclusion**: A brief conclusion with a call-to-action (CTA) if relevant.
+  
+  Ensure the language is clear and relevant to search queries around the topic, using key terms naturally. Aim to boost both readability and search ranking.`
     }
   ];
   

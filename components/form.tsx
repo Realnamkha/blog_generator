@@ -16,7 +16,7 @@ import { useFormStatus } from 'react-dom'
 
 export default function Form() {
   const [titles, setTitles] = useState<string[]>(['']);
-  const [progress, setProgress] = useState(0); 
+  // const [progress, setProgress] = useState(0); 
 
   // Function to handle adding a new title input field
   const addTitleField = () => {
@@ -43,7 +43,7 @@ export default function Form() {
         const result = await createCompletion(title);
         completed++;
 
-        setProgress(Math.round((completed / totalTitles) * 100));
+        // setProgress(Math.round((completed / totalTitles) * 100));
         if (result?.error) {
           toast.error(result.error);
         } else {
@@ -85,28 +85,23 @@ export default function Form() {
             <Button type="button" onClick={addTitleField} className="mb-4">
               Add Another Title
             </Button>
-            <SubmitButton progress={progress}/>
+            <SubmitButton/>
           </form>
         </CardContent>
       </Card>
     </section>
   );
 }
-function SubmitButton({ progress }: { progress: number }) {
+function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
     <Button
-      size="lg"
-      type="submit"
-      className={cn(
-        'mt-6 w-full rounded-lg py-3 font-medium text-white',
-        pending ? 'bg-indigo-500' : 'bg-indigo-600', // Simple color change when pending
-        'transition-colors duration-150 ease-in-out', // Smooth color transition
-        'hover:bg-indigo-700' // Light hover effect for interactivity
-      )}
-    >
-      {pending ? `${progress}%` : 'Generate Blog Post'}
-    </Button>
+    size='sm'
+    type='submit'
+    className={cn('mt-3 w-full rounded-lg', pending && 'animate-pulse')}
+  >
+    {pending ? 'Working on it...' : 'Submit'}
+  </Button>
   );
 }

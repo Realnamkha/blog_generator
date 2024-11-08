@@ -1,7 +1,5 @@
 import Link from 'next/link';
 import Logo from './logo';
-import { Button } from '@/components/ui/button';
-import { ModeToggle } from './ModeToggle';
 
 export default function Header() {
   return (
@@ -10,7 +8,7 @@ export default function Header() {
         <Link href='/'>
           <Logo />
         </Link>
-        <div className='flex items-center space-x-4'>
+        {/* <div className='flex items-center space-x-4'>
           <Button 
             size='sm' 
             variant='ghost' 
@@ -18,8 +16,8 @@ export default function Header() {
           >
             Sign In
           </Button>
-          <ModeToggle />
-        </div>
+          <ModeToggle /> */}
+        {/* </div> */}
       </div>
     </header>
   );
