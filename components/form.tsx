@@ -35,15 +35,12 @@ export default function Form() {
     setTitles(updatedTitles);
   };
 
-  async function action() {
-    const totalTitles = titles.length; // Total number of titles
-    let completed = 0; // Track the number of completed titles
+  async function action() 
+  {
     for (const title of titles) {
       if (title.trim()) {
         const result = await createCompletion(title);
-        completed++;
 
-        // setProgress(Math.round((completed / totalTitles) * 100));
         if (result?.error) {
           toast.error(result.error);
         } else {
